@@ -5,7 +5,7 @@ import time
 import subprocess
 import requests
 from bs4 import BeautifulSoup
-import re  # eklendi
+import re  
 
 app = Flask(__name__)
 CORS(app)
@@ -16,7 +16,7 @@ history = []
 urls = []
 points = 0
 
-# Gerçek katana crawler (subprocess ile)
+# katana crawler (subprocess ile)
 def katana_crawl(site_url):
     try:
         result = subprocess.check_output([
@@ -58,7 +58,7 @@ def run_job():
         except Exception as e:
             result = str(e)
 
-        # 🔍 URL'leri komut çıktısından bul
+        
         url_regex = r"https?://[^\s\"'>]+"
         found_urls = re.findall(url_regex, result)
         url_count = len(found_urls)
@@ -69,7 +69,7 @@ def run_job():
             "result": result,
             "type": "command_runner",
             "command": command,
-            "found": found_urls  # opsiyonel
+            "found": found_urls  
         }
 
         history.append({
