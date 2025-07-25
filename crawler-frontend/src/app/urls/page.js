@@ -32,7 +32,7 @@ export default function UrlsPage() {
 
   React.useEffect(() => {
     fetchUrls(page, filter, statusFilter);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    
   }, [page, filter, statusFilter]);
 
   const handleFilterChange = e => {
@@ -56,7 +56,7 @@ export default function UrlsPage() {
       const data = await res.json();
       setResult(data);
       setUrl("");
-      fetchUrls(1, filter, statusFilter); // Always refresh to first page after crawl
+      fetchUrls(1, filter, statusFilter); 
       setPage(1);
     } catch (e) {
       setResult({ error: "Bir hata oluştu." });
@@ -64,8 +64,7 @@ export default function UrlsPage() {
     setLoading(false);
   };
 
-  // Remove filteredUrls, always use urls from backend
-  // Pagination controls
+  
   const totalPages = Math.ceil(total / pageSize);
 
   return (
@@ -74,7 +73,7 @@ export default function UrlsPage() {
         <h1 className="text-3xl font-bold mb-2">URL Crawler</h1>
         <p className="text-muted-foreground">Bir URL girerek Flask crawler&apos;ı başlat</p>
       </div>
-      {/* 'URL Gir' kısmı kaldırıldı */}
+      {/*  */}
       <Card>
         <CardHeader>
           <CardTitle>URL Listesi</CardTitle>
@@ -97,9 +96,7 @@ export default function UrlsPage() {
               <option value="success">Başarılı</option>
               <option value="pending">Bekliyor</option>
             </select>
-            {/* <Button variant="outline" onClick={fetchUrls} disabled={fetching}>
-              Yenile
-            </Button> */}
+            {/* */}
           </div>
           <div className="overflow-x-auto w-full">
             <Table>
@@ -131,7 +128,7 @@ export default function UrlsPage() {
               </TableBody>
             </Table>
           </div>
-          {/* Pagination Controls */}
+          {/* */}
           <div className="flex justify-between items-center mt-4">
             <Button
               variant="outline"
