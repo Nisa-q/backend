@@ -70,7 +70,8 @@ Varsayılan olarak özel bir .env gerekmez. Katana binary'si backend Docker imaj
 
 ## Kurulum
 
-RabbitMQ 'nun çalıştığı portu boşlatmanız gerekmektedir bunun için :
+RabbitMQ 'nun çalıştığı portu boşlatmanız gerekmektedir bunun için:
+
     - Ubuntu : 
         ```
         sudo service rabbitmq-server stop
@@ -111,7 +112,7 @@ cd crawler-frontend
 ```
 Bağımlılıkları yükleyin:
 ```
-npm install (Eğer bir kere yüklediyseniz bu adımı atlayabilirsiniz)
+npm install # Eğer bir kere yüklediyseniz bu adımı atlayabilirsiniz
 ```
 Geliştirici modunda başlatın:
 ```
