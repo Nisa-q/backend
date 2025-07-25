@@ -70,6 +70,28 @@ Varsayılan olarak özel bir .env gerekmez. Katana binary'si backend Docker imaj
 
 ## Kurulum
 
+RabbitMQ 'nun çalıştığı portu boşlatmanız gerekmektedir bunun için :
+    - Ubuntu : 
+        ```
+        sudo service rabbitmq-server stop
+        sudo lsof -i :5672
+        ```
+        komutlarını terminale girerek bu işlemi gerçekleştirebilirsiniz.
+
+    - Windows :
+        CMD'yi yönetici olarak çalıştırıp konsolunuza 
+        ```
+        net stop RabbitMQ
+        netstat -aon | findstr :5672
+        ```
+        Komutları sırayla girerek bu işlemleri gerçekleştirebilirsiniz.
+
+Docker Desktop' ınızı başlatın
+-uyarı :
+    Uygulamayı başlatırken arka planda hiçbir container'ın çalışmadığından emin olun.
+    Bunun için Docker Desktop'ınızı yeniden başlatabilirsiniz.
+
+
 ### Backend
 Backend dizinine gidin:
 ```
@@ -77,10 +99,10 @@ cd crawler-backend
 ```
 Docker ile başlatmak için:
 ```
-docker-compose down
 docker-compose up --build
 ```
 Backend varsayılan olarak http://localhost:5000 adresinde çalışır.
+
 
 ### Frontend
 Frontend dizinine gidin:
@@ -89,7 +111,7 @@ cd crawler-frontend
 ```
 Bağımlılıkları yükleyin:
 ```
-npm install
+npm install (Eğer bir kere yüklediyseniz bu adımı atlayabilirsiniz)
 ```
 Geliştirici modunda başlatın:
 ```
@@ -113,3 +135,7 @@ Frontend varsayılan olarak http://localhost:3000 adresinde çalışır.
 - Katana büyük sitelerde uzun sürebilir, timeout 120 saniyedir.
 - Tüm veriler backend'de bellek içindedir (in-memory).
 - Frontend ve backend ayrı Docker konteynerlerinde çalışır. 
+
+## Crawl için örnek adresler
+- https://quotes.toscrape.com
+- https://httpbin.org/links/10/0
