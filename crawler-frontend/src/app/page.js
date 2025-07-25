@@ -8,16 +8,16 @@ import React, { useEffect, useState } from "react";
 export default function Home() {
   const [totalUrls, setTotalUrls] = useState(0);
   const [stats, setStats] = useState({ totalRuns: 0, lastRun: null });
-  // Remove loading state
+  
 
-  // Fetch total URL count from /total_urls
+  
   const fetchTotalUrls = async () => {
     const res = await fetch("/api/crawler/total_urls", { cache: "no-store" });
     const data = await res.json();
     setTotalUrls(data.totalUrls || 0);
   };
 
-  // Fetch stats (history, lastRun)
+  // 
   const fetchStats = async () => {
     const historyRes = await fetch("/api/crawler/history", { cache: "no-store" });
       const history = await historyRes.json();
@@ -27,7 +27,7 @@ export default function Home() {
     });
   };
 
-  // Fetch data (used for both mount and manual refresh)
+  
   const fetchAll = async () => {
     await Promise.all([fetchTotalUrls(), fetchStats()]);
   };
@@ -38,7 +38,7 @@ export default function Home() {
     }
   }, []);
 
-  // Remove loading screen, always show dashboard
+  
   return (
     <div className="container mx-auto p-6">
       <div className="mb-8">
@@ -46,7 +46,7 @@ export default function Home() {
         <p className="text-muted-foreground">
           Web crawler yönetim sistemi - Komut çıktıları, geçmiş ve URL tablosu
         </p>
-        {/* Yenile butonunu kaldırdık */}
+        {/* */}
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
